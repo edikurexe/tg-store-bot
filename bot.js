@@ -1135,24 +1135,42 @@ bot.on('callback_query', async (query) => {
         });
     }
     if (data === 'payment_info') {
-        const payText = getSetting('payment_info_text', 'Scan QRIS atau transfer. Setelah bayar, kirim bukti dengan /bayar <order_id> + foto.');
-        return editOrSend(chatId, msgId, `💳 *Cara Bayar:*\n\n${payText}`, {
-            reply_markup: { inline_keyboard: [[{ text: '🔙 Menu', callback_data: 'start' }]] }
-        });
+        const payText = getSetting('payment_info_text', 'Scan QRIS atau transfer. Setelah bayar, kirim bukti bayar ke admin.');
+        // Send without parse_mode to avoid Markdown issues from user-set text
+        try {
+            if (msgId) {
+                await bot.editMessageText(`💳 Cara Bayar:\n\n${payText}`, {
+                    chat_id: chatId, message_id: msgId,
+                    reply_markup: { inline_keyboard: [[{ text: '🔙 Menu', callback_data: 'start' }]] }
+                });
+            } else {
+                await bot.sendMessage(chatId, `💳 Cara Bayar:\n\n${payText}`, {
+                    reply_markup: { inline_keyboard: [[{ text: '🔙 Menu', callback_data: 'start' }]] }
+                });
+            }
+        } catch (e) {
+            bot.sendMessage(chatId, `💳 Cara Bayar:\n\n${payText}`);
+        }
+        return;
     }
     if (data === 'help') {
         const helpText = getSetting('help_text', 'Ada masalah? Hubungi admin.');
-        return editOrSend(chatId, msgId,
-            `📞 *Bantuan*\n\n` +
-            `/start — Menu utama\n` +
-            `/katalog — Lihat produk\n` +
-            `/bayar <id> — Kirim bukti bayar\n` +
-            `/order <id> — Cek status order\n\n` +
-            `${helpText}`,
-            {
-                reply_markup: { inline_keyboard: [[{ text: '🔙 Menu', callback_data: 'start' }]] }
+        const text = `📞 Bantuan\n\n/start — Menu utama\n/katalog — Lihat produk\n/bayar — Kirim bukti bayar\n/order — Cek status order\n\n${helpText}`;
+        try {
+            if (msgId) {
+                await bot.editMessageText(text, {
+                    chat_id: chatId, message_id: msgId,
+                    reply_markup: { inline_keyboard: [[{ text: '🔙 Menu', callback_data: 'start' }]] }
+                });
+            } else {
+                await bot.sendMessage(chatId, text, {
+                    reply_markup: { inline_keyboard: [[{ text: '🔙 Menu', callback_data: 'start' }]] }
+                });
             }
-        );
+        } catch (e) {
+            bot.sendMessage(chatId, text);
+        }
+        return;
     }
 
     if (data.startsWith('cat_')) return showCategory(chatId, data.slice(4), msgId);
