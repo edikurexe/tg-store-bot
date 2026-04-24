@@ -1,0 +1,10 @@
+node_modules/
+store.db
+store.db-journal
+session/
+session-wwebjs/
+.env
+*.backup*
+*.bak
+*.log
+/tmp/
