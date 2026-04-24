@@ -105,6 +105,26 @@ node bot.js
 
 > Other payment gateway keys can be set from the admin panel → ⚙️ Settings → 🔑 API Keys
 
+### 🐳 Docker (Recommended)
+
+```bash
+# Clone
+git clone https://github.com/edikurexe/tg-store-bot.git
+cd tg-store-bot
+
+# Setup environment
+cp .env.example .env
+nano .env  # Fill in your bot token & admin ID
+
+# Run with Docker Compose
+docker compose up -d
+
+# View logs
+docker compose logs -f
+```
+
+Data is persisted in `./data/` directory.
+
 ### Running as a Service (systemd)
 
 ```bash

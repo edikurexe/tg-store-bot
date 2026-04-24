@@ -1,0 +1,14 @@
+services:
+  store-bot:
+    build: .
+    container_name: tg-store-bot
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+    environment:
+      - TG_STORE_TOKEN=${TG_STORE_TOKEN}
+      - ADMIN_IDS=${ADMIN_IDS}
+      - STORE_NAME=${STORE_NAME:-🏪 Digital Store}
+      - MIDTRANS_SERVER_KEY=${MIDTRANS_SERVER_KEY:-}
+      - MIDTRANS_PRODUCTION=${MIDTRANS_PRODUCTION:-false}
+      - DATA_DIR=/app/data

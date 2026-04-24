@@ -1,0 +1,9 @@
+node_modules
+store.db
+store.db-journal
+data/
+.env
+.git
+*.backup*
+*.bak
+screenshots/
