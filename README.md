@@ -6,6 +6,23 @@ A full-featured Telegram bot for selling digital products with automatic deliver
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![Telegram](https://img.shields.io/badge/Telegram-Bot-blue?logo=telegram)
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="screenshots/01-welcome.jpg" width="250" alt="Welcome">
+  <img src="screenshots/02-saldo-member.jpg" width="250" alt="Saldo & Member">
+  <img src="screenshots/05-detail-produk.jpg" width="250" alt="Detail Produk">
+</p>
+<p align="center">
+  <img src="screenshots/04-kategori-produk.jpg" width="250" alt="Kategori">
+  <img src="screenshots/03-order-saya.jpg" width="250" alt="Order Saya">
+  <img src="screenshots/06-admin-panel.jpg" width="250" alt="Admin Panel">
+</p>
+<p align="center">
+  <img src="screenshots/07-staff-management.jpg" width="250" alt="Staff">
+  <img src="screenshots/08-settings.jpg" width="250" alt="Settings">
+</p>
+
 ## ✨ Features
 
 ### 🛍️ Store
